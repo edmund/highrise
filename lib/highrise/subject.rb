@@ -27,8 +27,9 @@ module Highrise
       Email.find_all_across_pages(options)
     end
 
+    # Highrise API is buggy - this should work but doesn't yet
     def deals(options={})
-      options.merge!(:from => "/#{self.class.collection_name}/#{id}/emails.xml")
+      options.merge!(:from => "/#{self.class.collection_name}/#{id}/deals.xml")
       Deal.find_all_across_pages(options)
     end
 
