@@ -17,16 +17,21 @@ module Highrise
       Task.create attrs
     end
 
-    def emails(options={})
-      options.merge!(:from => "/#{self.class.collection_name}/#{id}/emails.xml")
-      Email.find_all_across_pages(options)
-    end
-
     def upcoming_tasks(options={})
       options.merge!(:from => "/#{self.class.collection_name}/#{id}/tasks.xml")
       Task.find(:all, options)
     end
     
+    def emails(options={})
+      options.merge!(:from => "/#{self.class.collection_name}/#{id}/emails.xml")
+      Email.find_all_across_pages(options)
+    end
+
+    def deals(options={})
+      options.merge!(:from => "/#{self.class.collection_name}/#{id}/emails.xml")
+      Deal.find_all_across_pages(options)
+    end
+
     def label
       self.class.name.split('::').last
     end
